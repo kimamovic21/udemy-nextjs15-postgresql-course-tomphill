@@ -16,6 +16,7 @@ Section 01: Introduction
 -open terminal and type command: npx create-next-app@latest (project name)
 -open web page: https://ui.shadcn.com/
 -open terminal and type command: npx shadcn@latest init
+-open terminal and type command: npm run dev
 -open http://localhost:3000/ in your browser
 
 
@@ -46,4 +47,26 @@ Section 02: Implement auth
 -in middleware.ts file copy and paste code from documentation
 -in component layout.tsx import component ClerkProvider from package @clerk/nextjs
 -import other Clerk components from the same package
--in jsx, add components SignInButton and SignUpButton in div element
+-in jsx add component SignedOutButton 
+-in component SignedOutButton create div element 
+-in div element add components SignInButton and SignUpButton
+-open http://localhost:3000/ in your browser to see buttons
+
+08. Create test account and render user dropdown
+-open link: https://ui.shadcn.com/docs/components/button
+-open terminal and type command: npx shadcn@latest add button
+-after this command folders components and ui are created together with component button.tsx
+-in component layout.tsx import component Button from folder ui/button.tsx
+-import other components from package @clerk/nextjs
+-in jsx inside component SignedOutButton add components Button
+-add to Button component props ashChild, variant and className
+-in div element add component SignedIn
+-create component user-dropdown.tsx
+-in component user-dropdown.tsx import component UserButton from package '@clerk/
+-add 'use client' directive
+-in jsx add component UserButton with prop showName
+-in component layout.tsx import component UserDropdown from component user-dropdown.tsx
+-in component SignedIn add component UserDropdown
+-in user-dropdown component add to component UserButton prop appearance
+-open http://localhost:3000/ in your browser to sign up with new 
+-open Clerk and project dashboard to see list of all users

@@ -6,9 +6,12 @@ import {
   ClerkProvider,
   SignedOut,
   SignInButton,
-  SignUpButton
+  SignUpButton,
+  SignedIn,
 } from '@clerk/nextjs';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import UserDropdown from './user-dropdown';
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -41,11 +44,19 @@ export default function RootLayout({
 
             <div>
               <SignedOut>
-                <div className='flex items-center gap-1'>
-                  <SignInButton />
-                  <SignUpButton />
+                <div className='flex items-center'>
+                  <Button asChild variant='link' className='text-white'>
+                    <SignInButton />
+                  </Button>
+                  <Button asChild variant='link' className='text-white'>
+                    <SignUpButton />
+                  </Button>
                 </div>
               </SignedOut>
+
+              <SignedIn>
+                <UserDropdown />
+              </SignedIn>
             </div>
           </nav>
 
