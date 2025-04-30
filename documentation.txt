@@ -1,0 +1,19 @@
+Next.js 15 & PostgreSQL Udemy Course - WebDevEducation (Tom Phillips)
+
+
+Section 01: Introduction
+
+01. Introduction
+
+02. Important! Read this before you begin the course (Github repo etc)
+
+03. Udemy ratings and reviews
+
+04. Helpful tools and resources for this course
+
+05. Project setup
+-open web page: https://nextjs.org/
+-open terminal and type command: npx create-next-app@latest (project name)
+-open web page: https://ui.shadcn.com/
+-open terminal and type command: npx shadcn@latest init
+-open http://localhost:3000/ in your browser
