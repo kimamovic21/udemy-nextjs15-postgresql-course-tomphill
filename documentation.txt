@@ -34,3 +34,16 @@ Section 02: Implement auth
 -add prop href and className to Link component
 -add prop className to ChartColumnBigIcon icon
 -in nav element create div element to display auth button text
+
+07. Set up clerk auth
+-open web page: https://clerk.com/
+-create new Clerk auth app
+-open terminal and type command: npm install @clerk/nextjs
+-create .env.local and example.env files
+-in .env.local file create variables NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY and CLERK_SECRET_KEY
+-in example.env file add the example of env variables
+-create middleware.ts file
+-in middleware.ts file copy and paste code from documentation
+-in component layout.tsx import component ClerkProvider from package @clerk/nextjs
+-import other Clerk components from the same package
+-in jsx, add components SignInButton and SignUpButton in div element
