@@ -17,3 +17,20 @@ Section 01: Introduction
 -open web page: https://ui.shadcn.com/
 -open terminal and type command: npx shadcn@latest init
 -open http://localhost:3000/ in your browser
+
+
+Section 02: Implement auth
+
+06. Create the top navbar
+-in layout.tsx file create variable const poppins
+-import font Poppins from package next/font/google
+-in jsx add to body element className poppins.variable
+-create nav element with Tailwind CSS classes
+-open web page: https://lucide.dev/
+-import icon ChartColumnBigIcon from package lucide-react
+-open link: https://nextjs.org/docs/pages/api-reference/components/link
+-import Link from package next/link
+-in nav element add Link component and icon ChartColumnBigIcon
+-add prop href and className to Link component
+-add prop className to ChartColumnBigIcon icon
+-in nav element create div element to display auth button text
