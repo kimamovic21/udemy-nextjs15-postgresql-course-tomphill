@@ -95,3 +95,20 @@ Section 03: Build the create new transaction functionality
 -in component app/page.tsx create main element as parent element
 -in main element create div element
 -in div element create elements h1 and p
+
+10. Implement route protection for all dashboard routes
+-open link: https://clerk.com/docs/references/nextjs/clerk-middleware
+-in middleware.ts import function createRouteMatcher from package @clerk/nextjs/server
+-create variable const isProtectedRoute
+-in function clerkMiddleware() pass anonymous async function as argument with parameters auth and req
+-in anonymous async function add condition if (isProtectedRoute(req))
+-in if condition invoke function await auth.protect()
+-in component user-dropdown.tsx import function useRouter from package next/navigation
+-import icon ChartColumnBigIcon from package lucide-react
+-create variable const router
+-in jsx in component UserButton add component UserButton.MenuItems
+-in component UserButton.MenuItems add component UserButton.Action with prop label, labelIcon and event onClick
+-in folder dashboard create component page.tsx
+-in component dashboard/page.tsx create and export function DashboardPage()
+-in component dashboard/transactions create component page.tsx
+-in component dashboard/transactions/page.tsx create and export function TransactionsPage
