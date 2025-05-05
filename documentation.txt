@@ -70,3 +70,28 @@ Section 02: Implement auth
 -in user-dropdown component add to component UserButton prop appearance
 -open http://localhost:3000/ in your browser to sign up with new 
 -open Clerk and project dashboard to see list of all users
+
+
+Section 03: Build the create new transaction functionality
+
+09. Create the new transaction page
+-add new favicon icon in folder app
+-change app title and description in component layout.tsx
+-in folder app create folders dashboard, transactions, new and component page.tsx
+-in component new/page.tsx create function NewTransactionPage()
+-export function NewTransactionPage() as default
+-open http://localhost:3000/dashboard/transactions/new in your browser
+-open link: https://ui.shadcn.com/docs/components/breadcrumb
+-open terminal and type command: npx shadcn@latest add breadcrumb
+-in component new/page.tsx import breadcrumb components from component ui/breadcrumb.tsx
+-in jsx add to parent div element Tailwind CSS classes
+-in parent div element add component Breadcrumb
+-in component Breadcrumb add component BreadcrumbList
+-in component BreadcrumbList add three components BreadcrumbItem and two components BreadcrumbSeparator
+-open link: https://ui.shadcn.com/docs/components/card
+-open terminal and type command: npx shadcn@latest add card
+-in component new/page.tsx import card component from component ui/card.tsx
+-in parent div element add component Card
+-in component app/page.tsx create main element as parent element
+-in main element create div element
+-in div element create elements h1 and p
