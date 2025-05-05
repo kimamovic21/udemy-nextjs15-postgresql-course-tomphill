@@ -112,3 +112,17 @@ Section 03: Build the create new transaction functionality
 -in component dashboard/page.tsx create and export function DashboardPage()
 -in component dashboard/transactions create component page.tsx
 -in component dashboard/transactions/page.tsx create and export function TransactionsPage
+
+11. Create the transaction form schema with zod
+-open link: https://ui.shadcn.com/docs/components/form
+-open terminal and type command: npx shadcn@latest add form
+-open link: https://ui.shadcn.com/docs/components/calendar
+-open terminal and type command: npx shadcn@latest add calendar
+-in folder lib create files validators.ts and constants.ts
+-in validators.ts file create and export variable const transactionFormSchema
+-in constants.ts file create and export variable const defaultValues
+-in folder components create folder transactions and component transaction-form.tsx
+-in component transaction-form.tsx create and export function TransactionForm()
+-import functions zodResolver, useForm and object z
+-import variables transactionFormSchema and defaultValues
+-create variable const form
