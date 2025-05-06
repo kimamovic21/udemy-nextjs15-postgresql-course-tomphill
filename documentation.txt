@@ -174,3 +174,10 @@ Section 03: Build the create new transaction functionality
 -open terminal and type command: npm i drizzle-orm @neondatabase/serverless dotenv
 -open terminal and type command: npm i -D drizzle-kit tsx
 -open terminal and type command: npx drizzle-kit push
+
+15. Seed the database with categories data
+-create seed.ts file
+-in seed.ts file create array: const categoriesSeedData
+-create and invoke async function main()
+-open terminal and type command: npx tsx seed.ts
+-open database on Neon and see categories table
