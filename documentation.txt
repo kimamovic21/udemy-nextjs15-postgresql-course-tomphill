@@ -162,3 +162,15 @@ Section 03: Build the create new transaction functionality
 -create another component fieldset with Tailwind CSS flex classes
 -in fieldset element add component FormField for description
 -add component Button to submit the form
+
+14. Create the PostgreSQL database on Neon
+-open web page: https://neon.tech/
+-create new database NextCash
+-in .env.local file add variable DATABASE_URL
+-in example.env file add the example of env variable
+-open web page: https://orm.drizzle.team/
+-open link: https://orm.drizzle.team/docs/get-started/neon-new
+-follow the instructions from documentation
+-open terminal and type command: npm i drizzle-orm @neondatabase/serverless dotenv
+-open terminal and type command: npm i -D drizzle-kit tsx
+-open terminal and type command: npx drizzle-kit push
