@@ -143,3 +143,22 @@ Section 03: Build the create new transaction functionality
 -add one more component FormField for category Id
 -add Tailwind CSS class w-full class to components SelectTrigger
 -in component new/page.tsx import component TransactionForm from component transaction-for.tsx
+
+13. Finish rendering the remaining form fields
+-open link: https://ui.shadcn.com/docs/components/date-picker
+-open link: https://ui.shadcn.com/docs/components/popover
+-open terminal and type command: npx shadcn@latest add popover
+-open link: https://ui.shadcn.com/docs/components/input
+-open terminal and type command: npx shadcn@latest add input
+-in component transaction-form.tsx import function format from package date-fns
+-import icon Calendar as CalendarIcon from package lucide-react
+-import function cn from utils.ts file
+-import component Button from component ui/button.tsx
+-import component Calendar from component ui/calendar.tsx
+-import components Popover,PopoverContent and PopoverTrigger from component ui/popover.tsx
+-import component Input from component ui/input.tsx
+-add component FormField for transaction date
+-add component FormField for amount
+-create another component fieldset with Tailwind CSS flex classes
+-in fieldset element add component FormField for description
+-add component Button to submit the form
