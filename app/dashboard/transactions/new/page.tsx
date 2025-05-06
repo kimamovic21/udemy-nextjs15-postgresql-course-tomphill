@@ -13,6 +13,7 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import Link from 'next/link';
+import TransactionForm from '@/components/transactions/transaction-form';
 
 const NewTransactionPage = () => {
   return (
@@ -56,7 +57,7 @@ const NewTransactionPage = () => {
         </CardHeader>
 
         <CardContent>
-          New Transaction Form
+          <TransactionForm />
         </CardContent>
       </Card>
     </div>
