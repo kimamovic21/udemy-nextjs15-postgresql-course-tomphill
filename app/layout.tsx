@@ -10,6 +10,7 @@ import {
   SignedIn,
 } from '@clerk/nextjs';
 import { Button } from '@/components/ui/button';
+import { Toaster } from '@/components/ui/sonner';
 import Link from 'next/link';
 import UserDropdown from './user-dropdown';
 
@@ -61,6 +62,8 @@ export default function RootLayout({
           </nav>
 
           {children}
+
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>

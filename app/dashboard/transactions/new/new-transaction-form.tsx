@@ -2,6 +2,7 @@
 
 import { z } from 'zod';
 import { format } from 'date-fns';
+import { toast } from 'sonner';
 import { transactionFormSchema } from '@/lib/validators';
 import { createTransaction } from './actions';
 import { type Category } from '@/types/Category';
@@ -19,6 +20,14 @@ const NewTransactionForm = ({
       transactionDate: format(data.transactionDate, 'yyyy-MM-dd'),
       description: data.description,
     });
+
+    if (result.error) {
+      toast('Error', {
+        description: result.message,
+      });
+    };
+
+    console.log(result.id);
   };
 
   return (

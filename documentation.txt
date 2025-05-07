@@ -236,3 +236,15 @@ Section 03: Build the create new transaction functionality
 -import function createTransaction from actions.ts file
 -in function handleSubmit() invoke function await createTransaction()
 -the value of function await createTransaction() store in variable const result
+
+18. Finish the create transaction functionality
+-open link: https://ui.shadcn.com/docs/components/toast
+-open web page: https://sonner.emilkowal.ski/
+-open link: https://ui.shadcn.com/docs/components/sonner
+-open terminal and type command: npx shadcn@latest add sonner
+-in component layout.tsx import component Toaster from component ui/sonner.tsx
+-in component new-transaction-form.tsx add condition if (result.error)
+-import function toast from package sonner
+-in condition if (result.error) invoke function toast()
+-open route: http://localhost:3000/dashboard/transactions/new and create transaction
+-in component transaction-form.tsx add to fieldset elements prop disabled
