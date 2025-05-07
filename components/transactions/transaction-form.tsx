@@ -31,8 +31,9 @@ import {
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Input } from '../ui/input';
+import { type Category } from '@/types/Category';
 
-const TransactionForm = () => {
+const TransactionForm = ({ categories }: { categories: Category[]; }) => {
   const form = useForm<z.infer<typeof transactionFormSchema>>({
     resolver: zodResolver(transactionFormSchema),
     defaultValues: defaultValues,
@@ -43,6 +44,12 @@ const TransactionForm = () => {
   ) => {
     console.log(data);
   };
+
+  const transactionType = form.watch('transactionType');
+
+  const filteredCategories = categories?.filter(
+    (category) => category.type === transactionType
+  );
 
   return (
     <Form {...form}>
@@ -59,7 +66,10 @@ const TransactionForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Select
-                      onValueChange={field.onChange}
+                      onValueChange={(newValue) => {
+                        field.onChange(newValue);
+                        form.setValue('categoryId', 0);
+                      }}
                       value={field.value}
                     >
                       <SelectTrigger className='w-full'>
@@ -99,12 +109,14 @@ const TransactionForm = () => {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value='1'>
-                          Salary
-                        </SelectItem>
-                        <SelectItem value='2'>
-                          Investments
-                        </SelectItem>
+                        {filteredCategories?.map((category) => (
+                          <SelectItem
+                            key={category.id}
+                            value={category.id.toString()}
+                          >
+                            {category.name}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </FormControl>

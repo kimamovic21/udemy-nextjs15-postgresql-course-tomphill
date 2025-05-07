@@ -181,3 +181,24 @@ Section 03: Build the create new transaction functionality
 -create and invoke async function main()
 -open terminal and type command: npx tsx seed.ts
 -open database on Neon and see categories table
+
+16. Query for the categories data
+-open link: https://www.npmjs.com/package/server-only
+-open terminal and type command: npm i server-only
+-create folder server and getCategories.ts file
+-in getCategories.ts file import directive sever-only
+-import object db from db/index.ts file
+-import variable categoriesTable from schema.ts file
+-create and export async function getCategories()
+-in component new/page.tsx import function getCategories from getCategories.ts file
+-add async keyword to function NewTransactionPage()
+-create variable const categories
+-in jsx add prop categories to component TransactionForm
+-create folder types and Category.ts file
+-in Category.ts file create and export type Category
+-in component transaction-form.tsx import type Category
+-add to function TransactionForm() parameter transaction with type Category
+-create variable const filteredCategories
+-create variable const transactionType
+-in component SelectContent invoke the function filteredCategories.map()
+-in prop onValueChange pass the anonymous function with parameter newValue

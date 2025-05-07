@@ -1,3 +1,4 @@
+import { getCategories } from '@/server/getCategories';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,7 +16,9 @@ import {
 import Link from 'next/link';
 import TransactionForm from '@/components/transactions/transaction-form';
 
-const NewTransactionPage = () => {
+const NewTransactionPage = async () => {
+  const categories = await getCategories();
+
   return (
     <div className='max-w-screen-xl mx-auto p-10'>
       <Breadcrumb>
@@ -57,7 +60,7 @@ const NewTransactionPage = () => {
         </CardHeader>
 
         <CardContent>
-          <TransactionForm />
+          <TransactionForm categories={categories} />
         </CardContent>
       </Card>
     </div>
