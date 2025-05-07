@@ -202,3 +202,37 @@ Section 03: Build the create new transaction functionality
 -create variable const transactionType
 -in component SelectContent invoke the function filteredCategories.map()
 -in prop onValueChange pass the anonymous function with parameter newValue
+
+17. Build the createTransaction server action
+-in component transaction-form.tsx add to function TransactionForm() prop onSubmit
+-delete function handleSubmit
+-in prop onSubmit pass the function form.handleSubmit(onSubmit)
+-create type TransactionFormProps
+-add to function TransactionForm() parameters type TransactionFormProps
+-create component new-transaction-form.tsx
+-in new-transaction-form.tsx create and export function NewTransactionForm()
+-import component TransactionForm from component transaction-form.tsx
+-create async function handleSubmit()
+-in jsx add component TransactionForm with props categories and onSubmit
+-in component new/page.tsx import component NewTransactionForm from component new-transaction-form.tsx
+-in jsx add component NewTransactionForm with prop categories
+-in folder new create actions.ts file
+-in actions.ts file add directive 'use server'
+-create and export async function createTransaction()
+-add parameter data to function createTransaction()
+-import function auth from package clerk/nextjs/server
+-destructure variable const { userId } from function await auth()
+-add condition if (!userId)
+-in validators.ts file create and export variable const transactionSchema
+-import function subYears from package date-fns
+-in new/actions.ts file import variable transactionSchema
+-in function createTransaction() create variable const validation
+-add the condition if (!validation.success)
+-import object db from db/index.ts file
+-import variable transactionsTable from schema.ts file
+-invoke the function await db.insert()
+-the value of function await db.insert() store in variable const [transaction]
+-in component new-transaction-form.tsx import function format from package date-fns
+-import function createTransaction from actions.ts file
+-in function handleSubmit() invoke function await createTransaction()
+-the value of function await createTransaction() store in variable const result

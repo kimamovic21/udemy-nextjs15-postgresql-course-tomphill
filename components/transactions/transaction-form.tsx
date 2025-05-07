@@ -33,17 +33,19 @@ import { Calendar } from '@/components/ui/calendar';
 import { Input } from '../ui/input';
 import { type Category } from '@/types/Category';
 
-const TransactionForm = ({ categories }: { categories: Category[]; }) => {
+type TransactionFormProps = {
+  categories: Category[];
+  onSubmit: (data: z.infer<typeof transactionFormSchema>) => Promise<void>;
+};
+
+const TransactionForm = ({
+  categories,
+  onSubmit,
+}: TransactionFormProps) => {
   const form = useForm<z.infer<typeof transactionFormSchema>>({
     resolver: zodResolver(transactionFormSchema),
     defaultValues: defaultValues,
   });
-
-  const handleSubmit = async (
-    data: z.infer<typeof transactionFormSchema>
-  ) => {
-    console.log(data);
-  };
 
   const transactionType = form.watch('transactionType');
 
@@ -53,7 +55,7 @@ const TransactionForm = ({ categories }: { categories: Category[]; }) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
         <fieldset className='grid grid-cols-2 gap-y-5 gap-x-2 items-start'>
           <FormField
             control={form.control}
