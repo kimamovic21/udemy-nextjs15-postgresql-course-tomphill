@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import { format } from 'date-fns';
 import { toast } from 'sonner';
@@ -13,6 +14,8 @@ const NewTransactionForm = ({
 }: {
   categories: Category[]
 }) => {
+  const router = useRouter();
+
   const handleSubmit = async (data: z.infer<typeof transactionFormSchema>) => {
     const result = await createTransaction({
       categoryId: data.categoryId,
@@ -22,12 +25,13 @@ const NewTransactionForm = ({
     });
 
     if (result.error) {
-      toast('Error', {
-        description: result.message,
-      });
+      toast.error(result.message);
+      return;
     };
 
-    console.log(result.id);
+    toast.success('Transaction created');
+
+    router.push(`/dashboard/transactions?month=${data.transactionDate.getMonth() + 1}&year=${data.transactionDate.getFullYear()}`);
   };
 
   return (

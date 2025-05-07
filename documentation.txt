@@ -248,3 +248,11 @@ Section 03: Build the create new transaction functionality
 -in condition if (result.error) invoke function toast()
 -open route: http://localhost:3000/dashboard/transactions/new and create transaction
 -in component transaction-form.tsx add to fieldset elements prop disabled
+
+19. Handle error and success states for create transaction
+-in component new-transaction-form.tsx, in function handleSubmit() invoke function toast.success('Transaction created')
+-import function useRouter from package next/navigation
+-create variable const router
+-invoke function router.push()
+-open route: http://localhost:3000/dashboard/transactions/new and create transaction
+-if everything is ok you should be redirected to route, for example: http://localhost:3000/dashboard/transactions?month=1&year=2025
