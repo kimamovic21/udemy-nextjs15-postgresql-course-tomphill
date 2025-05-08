@@ -40,4 +40,19 @@ export const transactionSchema = z.object({
     .date()
     .min(subYears(new Date(), 10), 'Transaction date cannot be older more than 10 years')
     .max(addDays(new Date(), 1), 'Transaction date cannot be in the future'),
-})
+});
+
+export const searchTransactionSchema = z.object({
+  year: z
+    .coerce
+    .number()
+    .min(new Date().getFullYear() - 10)
+    .max(new Date().getFullYear() + 1)
+    .catch(new Date().getFullYear()),
+  month: z
+    .coerce
+    .number()
+    .min(1)
+    .max(12)
+    .catch(new Date().getMonth() + 1),
+});

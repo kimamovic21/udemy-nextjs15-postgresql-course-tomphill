@@ -256,3 +256,23 @@ Section 03: Build the create new transaction functionality
 -invoke function router.push()
 -open route: http://localhost:3000/dashboard/transactions/new and create transaction
 -if everything is ok you should be redirected to route, for example: http://localhost:3000/dashboard/transactions?month=1&year=2025
+
+
+Section 04: Build the transactions page
+
+20. Build out the basic transactions page UI
+-in component transactions/page.tsx import breadcrumb components from component ui/breadcrumb.tsx
+-import card components from component ui/card.tsx
+-add keyword async to function TransactionsPage()
+-add to function TransactionsPage() prop searchParams
+-add to prop searchParams type Promise
+-create variable const searchParamsValues 
+-in validators.ts file create and export variable const searchTransactionSchema
+-in component transactions/page.tsx import variable searchTransactionSchema
+-create variable const search
+-destructure variables const { month, year } from variable search
+-create variable const selectedDate
+-import function format from package date-fns
+-in component CardTitle invoke function format()
+-open route: http://localhost:3000/dashboard/transactions
+-open route: http://localhost:3000/dashboard/transactions?year=2024&month=12
