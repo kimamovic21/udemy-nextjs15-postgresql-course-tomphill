@@ -297,3 +297,18 @@ Section 04: Build the transactions page
 -create variable const transactions
 -open route: http://localhost:3000/dashboard/transactions
 -open route: http://localhost:3000/dashboard/transactions?year=2024&month=12
+
+22. Render the transactions data in a table
+-open link: https://ui.shadcn.com/docs/components/table
+-open terminal and type command: npx shadcn@latest add table
+-in jsx, in component CardContent add conditional rendering !transactions?.length
+-import table components from component ui/table.tsx
+-import icon PencilIcon from package lucide-react
+-add conditional rendering !!transactions?.length
+-in condition !!transactions?.length add table components
+-open route: http://localhost:3000/dashboard/transactions
+-open route: http://localhost:3000/dashboard/transactions?year=2024&month=12
+-open link: https://www.npmjs.com/package/numeral
+-open terminal and type command: npm i numeral
+-open terminal and type command: npm i --save-dev @types/numeral
+-import function numeral from package numeral

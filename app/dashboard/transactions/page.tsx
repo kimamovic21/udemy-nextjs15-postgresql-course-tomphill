@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { PencilIcon } from 'lucide-react';
 import { searchTransactionSchema } from '@/lib/validators';
 import { getTransactionsByMonth } from '@/server/getTransactionsByMonth';
 import { Button } from '@/components/ui/button';
@@ -16,7 +17,17 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 import Link from 'next/link';
+import numeral from 'numeral';
 
 const TransactionsPage = async ({
   searchParams
@@ -32,7 +43,6 @@ const TransactionsPage = async ({
   const selectedDate = new Date(year, month - 1, 1);
 
   const transactions = await getTransactionsByMonth({ month, year });
-  console.log(transactions);
 
   return (
     <div className='max-w-screen-xl mx-auto p-10'>
@@ -75,6 +85,57 @@ const TransactionsPage = async ({
               New Transaction
             </Link>
           </Button>
+
+          {!transactions?.length && (
+            <p className='text-center py-10 text-lg text-muted-foreground'>
+              There are no transactions for this month
+            </p>
+          )}
+
+          {!!transactions?.length && (
+            <Table className='mt-4'>
+              <TableCaption>A list of your transactions.</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Date</TableHead>
+                  <TableHead>Description</TableHead>
+                  <TableHead>Type</TableHead>
+                  <TableHead>Category</TableHead>
+                  <TableHead>Amount</TableHead>
+                  <TableHead className='text-right'>Edit</TableHead>
+                </TableRow>
+              </TableHeader>
+
+              <TableBody>
+                {transactions?.map((transaction) => (
+                  <TableRow key={transaction.id}>
+                    <TableCell>
+                      {format(new Date(transaction.transactionDate), "do MMM yyyy")}
+                    </TableCell>
+                    <TableCell>
+                      {transaction.description}
+                    </TableCell>
+                    <TableCell>
+                      {transaction.categoryId}
+                    </TableCell>
+                    <TableCell>
+                      {transaction.categoryId}
+                    </TableCell>
+                    <TableCell>
+                      ${numeral(transaction.amount).format('0,0[.]00')}
+                    </TableCell>
+                    <TableCell className='text-right'>
+                      <Button variant='outline' asChild size='icon' aria-label='Edit transaction'>
+                        <Link href={`/dashboard/transactions/${transaction.id}`}>
+                          <PencilIcon />
+                        </Link>
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </CardContent>
       </Card>
     </div>
