@@ -276,3 +276,24 @@ Section 04: Build the transactions page
 -in component CardTitle invoke function format()
 -open route: http://localhost:3000/dashboard/transactions
 -open route: http://localhost:3000/dashboard/transactions?year=2024&month=12
+
+21. Query for the transactions data
+-in folder server create getTransactionsByMonth.ts file
+-in getTransactionsByMonth.ts file import package server-only
+-create and export function getTransactionsByMonth()
+-import function auth from package clerk
+-add to function getTransactionsByMonth() parameters month and year
+-add types to parameters
+-destructure variable const { userId } from await auth()
+-add condition if (!userId)
+-import variable db from db/index.ts file
+-import variable transactionsTable from schema.ts file
+-import functions and, eq, gte, lte & desc from package drizzle-orm
+-import function format from package date-fns 
+-create variables const earliestDate and const latestDate
+-create variable const transactions
+-add return transactions
+-import function getTransactionsByMonth in component transactions/page.tsx
+-create variable const transactions
+-open route: http://localhost:3000/dashboard/transactions
+-open route: http://localhost:3000/dashboard/transactions?year=2024&month=12

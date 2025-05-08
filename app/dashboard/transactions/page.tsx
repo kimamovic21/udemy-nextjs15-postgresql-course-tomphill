@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
-import { searchTransactionSchema } from '@/lib/validators'; 
+import { searchTransactionSchema } from '@/lib/validators';
+import { getTransactionsByMonth } from '@/server/getTransactionsByMonth';
 import { Button } from '@/components/ui/button';
 import {
   Breadcrumb,
@@ -25,10 +26,13 @@ const TransactionsPage = async ({
   const searchParamsValues = await searchParams;
 
   const search = searchTransactionSchema.parse(searchParamsValues);
-  
+
   const { month, year } = search;
 
   const selectedDate = new Date(year, month - 1, 1);
+
+  const transactions = await getTransactionsByMonth({ month, year });
+  console.log(transactions);
 
   return (
     <div className='max-w-screen-xl mx-auto p-10'>
