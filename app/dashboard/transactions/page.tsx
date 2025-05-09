@@ -28,6 +28,7 @@ import {
 } from '@/components/ui/table';
 import Link from 'next/link';
 import numeral from 'numeral';
+import { Badge } from '@/components/ui/badge';
 
 const TransactionsPage = async ({
   searchParams
@@ -115,11 +116,19 @@ const TransactionsPage = async ({
                     <TableCell>
                       {transaction.description}
                     </TableCell>
-                    <TableCell>
-                      {transaction.categoryId}
+                    <TableCell className='capitalize'>
+                      <Badge
+                        className={
+                          transaction.transactionType === 'income'
+                            ? 'bg-lime-500'
+                            : 'bg-orange-600'
+                        }
+                      >
+                        {transaction.transactionType}
+                      </Badge>
                     </TableCell>
                     <TableCell>
-                      {transaction.categoryId}
+                      {transaction.category}
                     </TableCell>
                     <TableCell>
                       ${numeral(transaction.amount).format('0,0[.]00')}

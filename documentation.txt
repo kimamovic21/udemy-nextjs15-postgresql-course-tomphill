@@ -312,3 +312,15 @@ Section 04: Build the transactions page
 -open terminal and type command: npm i numeral
 -open terminal and type command: npm i --save-dev @types/numeral
 -import function numeral from package numeral
+
+23. Query for the associated category data for a transaction
+-in getTransactionsByMonth.ts file import variable categoriesTable
+-in query select add an object with six properties
+-add to db object query leftJoin()
+-open link: https://ui.shadcn.com/docs/components/badge
+-open terminal and type command: npx shadcn@latest add badge
+-in component transactions/page.tsx import component Badge from component ui/badge.tsx
+-open route: http://localhost:3000/dashboard/transactions
+-in jsx add to component TableCell that displays transactionType Tailwind CSS class capitalize
+-in component TableCell add component Badge
+-add to component Badge dynamic className based on transaction type
