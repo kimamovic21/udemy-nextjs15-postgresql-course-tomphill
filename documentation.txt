@@ -59,7 +59,7 @@ Section 02: Implement auth
 -in component layout.tsx import component Button from folder ui/button.tsx
 -import other components from package @clerk/nextjs
 -in jsx inside component SignedOutButton add components Button
--add to Button component props ashChild, variant and className
+-add to Button component props asChild, variant and className
 -in div element add component SignedIn
 -create component user-dropdown.tsx
 -in component user-dropdown.tsx import component UserButton from package '@clerk/
@@ -324,3 +324,44 @@ Section 04: Build the transactions page
 -in jsx add to component TableCell that displays transactionType Tailwind CSS class capitalize
 -in component TableCell add component Badge
 -add to component Badge dynamic className based on transaction type
+
+24. Implement the month and year filters for transactions
+-in folder transactions create component filters.tsx
+-in component filters.tsx create and export function Filters()
+-add to function Filters props year, month and yearsRange
+-add to parameters types
+-in component transactions/page.tsx import component Filters from component filters.tsx
+-in jsx, in component CardTitle add component Filters with props year, month and yearsRange
+-in component filters.tsx add directive 'use client'
+-import select components from component ui/select.tsx
+-import useState function from package react
+-import function format from package date-fns
+-create state variable selectedMonth and set function setSelectedMonth
+-create state variable selectedYear and set function setSelectedYear
+-in jsx add component Select for months
+-in component SelectContent invoke function Array.from()
+-in function Array.from() add component SelectItem
+-in component SelectItem invoke function format()
+-add to component Select prop value and onValueChange
+-in folder server create getTransactionYearsRange.ts file
+-in getTransactionYearsRange.ts file import package server-only
+-create and export async function getTransactionYearsRange()
+-import function auth from package clerk
+-destructure variable const { userId } from function await auth()
+-import object db from db/index.ts file
+-import variable transactionsTable from schema.ts file
+-import functions asc & eq from package drizzle-orm
+-destructure variable const [earliestTransaction] from function await db.select()
+-create variables const today and const currentYear
+-create variables const earliestYear and const years
+-add return years
+-in component transactions/page.tsx import function getTransactionYearsRange from getTransactionYearsRange.ts file
+-create variable const yearsRange
+-in jsx create component Select for years
+-open route: http://localhost:3000/dashboard/transactions
+-open route: http://localhost:3000/dashboard/transactions?year=2024&month=12
+-in component filters.tsx add Tailwind CSS flex classes to parent div element
+-import component Button from component ui/button.tsx
+-import component Link from package next/navigation
+-in div element add component Button with prop asChild
+-in component Button add component Link with dynamic prop href

@@ -2,7 +2,9 @@ import { format } from 'date-fns';
 import { PencilIcon } from 'lucide-react';
 import { searchTransactionSchema } from '@/lib/validators';
 import { getTransactionsByMonth } from '@/server/getTransactionsByMonth';
+import { getTransactionYearsRange } from '@/server/getTransactionYearsRange';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -24,11 +26,11 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from '@/components/ui/table';
 import Link from 'next/link';
 import numeral from 'numeral';
-import { Badge } from '@/components/ui/badge';
+import Filters from './filters';
 
 const TransactionsPage = async ({
   searchParams
@@ -44,6 +46,8 @@ const TransactionsPage = async ({
   const selectedDate = new Date(year, month - 1, 1);
 
   const transactions = await getTransactionsByMonth({ month, year });
+
+  const yearsRange = await getTransactionYearsRange();
 
   return (
     <div className='max-w-screen-xl mx-auto p-10'>
@@ -75,7 +79,11 @@ const TransactionsPage = async ({
               <span>Transactions</span>
             </p>
             <div>
-              dropdowns
+              <Filters 
+                year={year} 
+                month={month}
+                yearsRange={yearsRange}
+              />
             </div>
           </CardTitle>
         </CardHeader>
