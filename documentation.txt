@@ -365,3 +365,20 @@ Section 04: Build the transactions page
 -import component Link from package next/navigation
 -in div element add component Button with prop asChild
 -in component Button add component Link with dynamic prop href
+
+
+Section 05: Build the edit transaction page
+
+25. Create the edit transaction page and render the transaction form
+-open route: http://localhost:3000/dashboard/transactions and click edit transaction button
+-in folder transactions create folder [transactionId] and component page.tsx
+-in component [transactionId]/page.tsx create and export function EditTransactionPage()
+-add to function EditTransactionPage() async keyword and prop params with type Promise
+-open route: http://localhost:3000/dashboard/transactions/[transactionId]
+-create variables const paramsValue and const transactionId
+-add condition if (isNaN(transactionId))
+-import breadcrumb components from component ui/breadcrumb.tsx
+-import card components from component ui/card.tsx
+-import function getCategories from server/getCategories.ts file
+-add breadcrumb and card components in jsx
+-create variable const categories
