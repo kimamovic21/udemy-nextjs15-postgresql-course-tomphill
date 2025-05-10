@@ -1,4 +1,6 @@
+import { notFound } from 'next/navigation';
 import { getCategories } from '@/server/getCategories';
+import { getTransaction } from '@/server/getTransaction';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,6 +16,7 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import Link from 'next/link';
+import EditTransactionForm from './edit-transaction-form';
 
 const EditTransactionPage = async ({
   params
@@ -24,11 +27,15 @@ const EditTransactionPage = async ({
   const transactionId = Number(paramsValue.transactionId);
 
   if (isNaN(transactionId)) {
-    return <div>oops! transaction not found!</div>;
+    notFound();
   };
 
   const categories = await getCategories();
-  console.log(categories);
+  const transaction = await getTransaction(transactionId);
+
+  if (!transaction) {
+    notFound();
+  };
 
   return (
     <div className='max-w-screen-xl mx-auto p-10'>
@@ -71,7 +78,10 @@ const EditTransactionPage = async ({
         </CardHeader>
 
         <CardContent>
-          {paramsValue.transactionId}
+          <EditTransactionForm
+            categories={categories}
+            transaction={transaction}
+          />
         </CardContent>
       </Card>
     </div>

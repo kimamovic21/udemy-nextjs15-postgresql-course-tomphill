@@ -8,6 +8,7 @@ import { Calendar as CalendarIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { transactionFormSchema } from '@/lib/validators';
 import { defaultValues } from '@/lib/constants';
+import { type Category } from '@/types/Category';
 import {
   Form,
   FormControl,
@@ -31,20 +32,28 @@ import {
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Input } from '../ui/input';
-import { type Category } from '@/types/Category';
 
 type TransactionFormProps = {
   categories: Category[];
   onSubmit: (data: z.infer<typeof transactionFormSchema>) => Promise<void>;
+  defaultValues?: typeof defaultValues
 };
 
 const TransactionForm = ({
   categories,
   onSubmit,
+  defaultValues
 }: TransactionFormProps) => {
   const form = useForm<z.infer<typeof transactionFormSchema>>({
     resolver: zodResolver(transactionFormSchema),
-    defaultValues: defaultValues,
+    defaultValues: {
+      amount: 0,
+      categoryId: 0,
+      description: '',
+      transactionDate: new Date(),
+      transactionType: 'income',
+      ...defaultValues
+    },
   });
 
   const transactionType = form.watch('transactionType');

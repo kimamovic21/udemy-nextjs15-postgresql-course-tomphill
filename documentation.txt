@@ -382,3 +382,49 @@ Section 05: Build the edit transaction page
 -import function getCategories from server/getCategories.ts file
 -add breadcrumb and card components in jsx
 -create variable const categories
+
+26. Query for transaction and populate transaction form with default values
+-in folder [transactionId] create component edit-transaction-form.tsx
+-in component edit-transaction-form.tsx add directive 'use client'
+-create and export function EditTransactionForm() as default
+-import type Category from Category.ts file
+-add to function EditTransactionForm() parameter categories with type Category[]
+-import function useRouter()
+-create variable const router
+-import function toast from package sonner
+-import object z from package zod
+-import variable transactionFormSchema from validators.ts file
+-create async function handleSubmit() with type data
+-add to parameter data type z.infer<typeof transactionFormSchema>
+-create variable const result with type any
+-add condition if (result.error)
+-invoke function toast.success()
+-invoke function router.push()
+-import component TransactionForm from component transaction-form.tsx
+-in jsx add component TransactionForm with props categories and onSubmit
+-in component [transactionId]/page.tsx import component EditTransactionForm.tsx from edit-transaction-form.tsx
+-in component CardContent add component EditTransactionForm with prop categories
+-in component transaction-form.tsx, add to function TransactionForm() parameter defaultValues
+-in type TransactionFormProps add field for defaultValues
+-in function useForm() add object defaultValues
+-in folder server create getTransaction.ts file
+-in getTransaction.ts file add directive 'server-only'
+-import function auth from package clerk
+-create and export async function getTransaction()
+-add to function getTransaction() parameter transactionId with type number
+-import object db from db/index.ts file
+-import variable transactionsTable
+-in component transactionId/page.tsx import function getTransaction
+-create variable const transaction
+-add condition if (!transaction)
+-import function notFound from package next/navigation
+-in condition if (!transaction) invoke function notFound()
+-in condition (isNaN(transactionId)) invoke function notFound()
+-in jsx add to component EditTransactionForm prop transaction
+-in component edit-transaction-form.tsx add to function EditTransactionForm() parameter transaction 
+-in folder types create Transaction.ts file
+-in Transaction.ts file create and export type Transaction
+-in component edit-transaction-form.tsx import type Transaction from Transaction.ts file
+-add to parameter transaction type Transaction
+-in jsx add to component TransactionForm prop defaultValues  
+-in eslint.config.mjs file add object rules
