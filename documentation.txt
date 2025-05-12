@@ -488,3 +488,15 @@ Section 05: Build the edit transaction page
 -in jsx, add to component Button event onClick
 -in event onClick pass the function handleDeleteConfirm
 -open route: http://localhost:3000/dashboard/transactions/[transactionId] ad click trash icon and delete button
+
+30. Add custom error page for non-existent transactions
+-in folder [transactionId] create component layout.tsx
+-move breadcrumb components from component page.tsx to component layout.tsx
+-in component layout.tsx create and export function Layout() as default
+-add to function Layout() prop children with type React.ReactNode
+-in jsx add div element with Tailwind CSS classes
+-in div element add breadcrumb components
+-in div element add prop children
+-create component not-found.tsx
+-in component not-found.tsx create and export function NotFound() as default
+-create h2 element with Tailwind CSS classes
