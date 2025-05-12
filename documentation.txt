@@ -451,3 +451,18 @@ Section 05: Build the edit transaction page
 -store the value of function await updateTransaction() in variable const result
 -change condition from if (result.error) to if (result?.error)
 -open route: http://localhost:3000/dashboard/transactions/[transactionId] and edit transaction
+
+28. Add the delete transaction UI
+-open link: https://ui.shadcn.com/docs/components/alert-dialog
+-open terminal and type command: npx shadcn@latest add alert-dialog
+-in folder [transactionId] create component delete-transaction-dialog.tsx
+-in component delete-transaction-dialog.tsx add directive 'use client'
+-create and export function DeleteTransactionDialog() as default
+-import alert components from component ui/alert-dialog.tsx
+-import component Button from component ui/button.tsx
+-import icon Trash2Icon from package lucide-react
+-in jsx add alert components
+-in component [transactionId]/page.tsx import component DeleteTransactionDialogs from component delete-transaction-dialog.tsx
+-in jsx, add in component CardTitle component DeleteTransactionDialog
+-add to component DeleteTransactionDialog props transactionId and transactionDate
+-open route: http://localhost:3000/dashboard/transactions/[transactionId] ad click trash icon

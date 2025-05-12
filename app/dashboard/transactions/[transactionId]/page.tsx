@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/card';
 import Link from 'next/link';
 import EditTransactionForm from './edit-transaction-form';
+import DeleteTransactionDialog from './delete-transaction-dialog';
 
 const EditTransactionPage = async ({
   params
@@ -72,8 +73,12 @@ const EditTransactionPage = async ({
 
       <Card className='mt-4 max-w-screen-md'>
         <CardHeader>
-          <CardTitle>
-            Edit Transaction
+          <CardTitle className='flex justify-between'>
+            <span>Edit Transaction</span>
+            <DeleteTransactionDialog
+              transactionId={transaction.id}
+              transactionDate={transaction.transactionDate}
+            />
           </CardTitle>
         </CardHeader>
 
