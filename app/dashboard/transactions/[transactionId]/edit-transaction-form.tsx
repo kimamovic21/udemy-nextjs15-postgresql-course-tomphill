@@ -3,9 +3,11 @@
 import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import { toast } from 'sonner';
+import { format } from 'date-fns';
 import { transactionFormSchema } from '@/lib/validators';
 import { type Category } from '@/types/Category';
 import { type Transaction } from '@/types/Transaction';
+import { updateTransaction } from './actions';
 import TransactionForm from '@/components/transactions/transaction-form';
 
 const EditTransactionForm = ({
@@ -18,9 +20,15 @@ const EditTransactionForm = ({
   const router = useRouter();
 
   const handleSubmit = async (data: z.infer<typeof transactionFormSchema>) => {
-    const result: any = {};
+    const result = await updateTransaction({
+      id: transaction.id,
+      amount: data.amount,
+      description: data.description,
+      categoryId: data.categoryId,
+      transactionDate: format(data.transactionDate, 'yyyy-MM-dd'),
+    });
 
-    if (result.error) {
+    if (result?.error) {
       toast.error(result.message);
       return;
     };

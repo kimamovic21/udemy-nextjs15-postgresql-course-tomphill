@@ -5,12 +5,12 @@ import { db } from '@/db';
 import { transactionSchema } from '@/lib/validators';
 import { transactionsTable } from '@/db/schema';
 
-export const createTransaction = async (data: {
+export async function createTransaction(data: {
   categoryId: number;
   amount: number;
   transactionDate: string;
   description: string;
-}) => {
+}) {
   const { userId } = await auth();
 
   if (!userId) {

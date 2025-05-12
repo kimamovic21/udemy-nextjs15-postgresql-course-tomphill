@@ -428,3 +428,26 @@ Section 05: Build the edit transaction page
 -add to parameter transaction type Transaction
 -in jsx add to component TransactionForm prop defaultValues  
 -in eslint.config.mjs file add object rules
+
+27. Finish the edit transaction functionality (updateTransaction server action)
+-in folder [transactionId] create actions.ts file
+-in actions.ts file add directive 'use server'
+-create and export async function updateTransaction()
+-import function auth from package clerk
+-add to function updateTransaction() five parameters with types
+-destructure variable const { userId } from function await auth()
+-add condition if (!userId)
+-in validators.ts file create and export variable const updateTransactionSchema
+-in [transactionId]/actions.ts file import variable updateTransactionSchema
+-create variable const validation 
+-add condition if (!validation.success)
+-import object db from db/index.ts file
+-import variable transactionsTable from schema.ts file
+-import function and & eq from package drizzle-orm
+-invoke function await db.update()
+-in component edit-transaction-form.tsx import function updateTransaction from [transactionId]/actions.ts file
+-import function format from package date-fns
+-in function handleSubmit() invoke function await updateTransaction()
+-store the value of function await updateTransaction() in variable const result
+-change condition from if (result.error) to if (result?.error)
+-open route: http://localhost:3000/dashboard/transactions/[transactionId] and edit transaction

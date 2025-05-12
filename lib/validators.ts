@@ -56,3 +56,9 @@ export const searchTransactionSchema = z.object({
     .max(12)
     .catch(new Date().getMonth() + 1),
 });
+
+export const updateTransactionSchema = transactionSchema.and(
+  z.object({
+    id: z.number(),
+  }),
+);
