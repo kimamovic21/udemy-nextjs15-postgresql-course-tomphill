@@ -27,7 +27,7 @@ export async function updateTransaction(data: {
   if (!validation.success) {
     return {
       error: true,
-      message: validation.error.issues[0].message
+      message: validation.error.issues[0].message,
     };
   };
 
@@ -44,5 +44,25 @@ export async function updateTransaction(data: {
         eq(transactionsTable.id, data.id),
         eq(transactionsTable.userId, userId)
       )
+    );
+};
+
+export async function deleteTransaction(transactionId: number) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return {
+      error: true,
+      message: 'Unauthorized',
+    };
+  };
+
+  await db
+    .delete(transactionsTable)
+    .where(
+      and(
+        eq(transactionsTable.id, transactionId),
+        eq(transactionsTable.userId, userId),
+      ),
     );
 };

@@ -466,3 +466,25 @@ Section 05: Build the edit transaction page
 -in jsx, add in component CardTitle component DeleteTransactionDialog
 -add to component DeleteTransactionDialog props transactionId and transactionDate
 -open route: http://localhost:3000/dashboard/transactions/[transactionId] ad click trash icon
+
+29. Create the deleteTransaction server action
+-in actions.ts file create and export async function deleteTransaction()
+-add to function deleteTransaction() parameter transactionId with type number
+-in function deleteTransaction() destructure variable const { userId } from function await auth()
+-add condition if (!userId)
+-invoke function await db.delete()
+-in component delete-transaction-dialog.tsx import function deleteTransaction from actions.ts file
+-import function toast from package sonner
+-create async function handleDeleteConfirm() with parameter transactionId
+-in function handleDeleteConfirm() create variable const result
+-add condition if (result?.error)
+-in condition if invoke function toast.error(result.message)
+-after if condition invoke function toast.success('Transaction deleted')
+-import function useRouter from package next/navigation
+-create variable const router
+-destructure variables const [year, month] from variable transactionDate
+-add to variable transactionDate function split('-')
+-invoke function router.push()
+-in jsx, add to component Button event onClick
+-in event onClick pass the function handleDeleteConfirm
+-open route: http://localhost:3000/dashboard/transactions/[transactionId] ad click trash icon and delete button

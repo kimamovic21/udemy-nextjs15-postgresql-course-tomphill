@@ -1,6 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 import { Trash2Icon } from 'lucide-react';
+import { deleteTransaction } from './actions';
 import { Button } from '@/components/ui/button';
 import {
   AlertDialog,
@@ -20,6 +23,23 @@ const DeleteTransactionDialog = ({
   transactionId: number;
   transactionDate: string;
 }) => {
+  const router = useRouter();
+
+  const handleDeleteConfirm = async () => {
+    const result = await deleteTransaction(transactionId);
+
+    if(result?.error) {
+      toast.error(result.message);
+      return;
+    };
+
+    toast.success('Transaction deleted');
+
+    const [year, month] = transactionDate.split('-');
+
+    router.push(`/dashboard/transactions?month=${month}&year=${year}`);
+  };
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -44,7 +64,10 @@ const DeleteTransactionDialog = ({
             Cancel
           </AlertDialogCancel>
 
-          <Button variant='destructive'>
+          <Button 
+            variant='destructive'
+            onClick={handleDeleteConfirm}
+          >
             Delete
           </Button>
         </AlertDialogFooter>
