@@ -46,7 +46,8 @@ const RecentTransactions = async () => {
       <CardContent>
         {!transactions?.length && (
           <p className='text-center py-10 text-lg text-muted-foreground'>
-            There are no transactions for this month.
+            You have no transactions yet.
+            Start by hitting 'Create New' to create your first transaction.
           </p>
         )}
 

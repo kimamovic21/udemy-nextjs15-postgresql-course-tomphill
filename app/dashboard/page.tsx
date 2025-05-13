@@ -1,4 +1,5 @@
 import RecentTransactions from './recent-transactions';
+import Cashflow from './cashflow';
 
 const DashboardPage = () => {
   return (
@@ -6,6 +7,8 @@ const DashboardPage = () => {
       <h1 className='text-4xl font-semibold pb-5'>
         Dashboard
       </h1>
+
+      <Cashflow />
 
       <RecentTransactions />
     </div>

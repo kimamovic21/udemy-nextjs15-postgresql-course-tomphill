@@ -532,3 +532,29 @@ Section 06: Build the main dashboard page
 -import component Badge from component ui/badge.tsx
 -import functions format and numeral
 -in jsx, add conditions rendering !transactions?.length and !!transactions?.length
+-open route: http://localhost:3000/dashboard
+
+32. Query for the annual cashflow
+-in folder dashboard create component cashflow.tsx
+-in component cashflow.tsx create and export async function Cashflow() as default
+-in folder server create getAnnualCashflow.ts file
+-in getAnnualCashflow.ts file import package 'server only'
+-create and export async function getAnnualCashflow()
+-add to function getAnnualCashflow() parameter year with type number
+-import function auth from package clerk
+-destructure variable const { userId }
+-add condition (!userId)
+-in condition (!userId) add return []
+-import object db from db/index.ts file
+-import functions and, eq, sql & sum from package drizzle-orm
+-import variables categoriesTable and transactionsTable from `schema.ts` tile
+-create variable const month
+-create variable const cashflow
+-create variable const annualCashflow
+-create variable const annualCashflow with object type
+-add loop for (let i = 1; i <=12; i++)
+-in component cashflow.tsx import function getAnnualCashflow from getAnnualCashflow.ts file
+-in function Cashflow() create variable const cashflow
+-in component dashboard/page.tsx import component Cashflow from component cashflow.tsx
+-in jsx add component Cashflow inside div parent element
+-open route: http://localhost:3000/dashboard
