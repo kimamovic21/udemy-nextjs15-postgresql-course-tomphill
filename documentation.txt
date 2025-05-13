@@ -500,3 +500,35 @@ Section 05: Build the edit transaction page
 -create component not-found.tsx
 -in component not-found.tsx create and export function NotFound() as default
 -create h2 element with Tailwind CSS classes
+
+
+Section 06: Build the main dashboard page
+
+31. Add the recent transactions table
+-in folder dashboard create component recent-transactions.tsx
+-in component recent-transactions.tsx create and export function RecentTransactions() as default
+-import components card from component ui/card.tsx
+-import component Button from component ui/button.tsx
+-import component Link from component next/link
+-in jsx add component Card as parent component
+-in component dashboard/page.tsx import component RecentTransactions from component recent-transactions.tsx
+-in jsx create h1 element with Tailwind CSS classes
+-in folder server create getRecentTransactions.ts file
+-in getRecentTransactions.ts file add directive 'server-only'
+-create and export async function getRecentTransactions()
+-import function auth from package clerk
+-in function getRecentTransactions() destructure variable const { userId }
+-add condition if (!userId)
+-in condition if (!userId) add return []
+-import object db from db/index.ts file
+-import variable categoriesTable and transactionsTable from schema.ts file
+-import functions desc & eq from package drizzle-orm
+-create variable const transactions
+-add return transactions
+-in component recent-transactions.tsx import function getRecentTransactions from getRecentTransactions.ts file
+-add to function RecentTransactions() keyword async
+-in function RecentTransactions() create variable const transactions
+-import components table from component ui/table.tsx
+-import component Badge from component ui/badge.tsx
+-import functions format and numeral
+-in jsx, add conditions rendering !transactions?.length and !!transactions?.length

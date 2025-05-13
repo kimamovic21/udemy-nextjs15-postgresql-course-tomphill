@@ -1,14 +1,13 @@
-import Link from 'next/link';
+import RecentTransactions from './recent-transactions';
 
 const DashboardPage = () => {
   return (
-    <div className='flex gap-1'>
-      <Link href='/dashboard/transactions'>
-        Transactions
-      </Link>
-      <Link href='/dashboard/transactions/new'>
-        New Transaction
-      </Link>
+    <div className='max-w-screen-xl mx-auto py-5'>
+      <h1 className='text-4xl font-semibold pb-5'>
+        Dashboard
+      </h1>
+
+      <RecentTransactions />
     </div>
   );
 };
