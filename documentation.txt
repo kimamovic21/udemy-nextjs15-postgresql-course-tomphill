@@ -558,3 +558,37 @@ Section 06: Build the main dashboard page
 -in component dashboard/page.tsx import component Cashflow from component cashflow.tsx
 -in jsx add component Cashflow inside div parent element
 -open route: http://localhost:3000/dashboard
+
+33. Add the cashflow card and dynamic loading data
+-in component cashflow.tsx import card components from component ui/card.tsx
+-in folder dashboard create component cashflow-filters.tsx
+-in component cashflow-filters.tsx add directive 'use client'
+-create and export async function CashflowFilters()
+-import components select from component ui/select.tsx
+-create type CashflowFiltersProps
+-add to function CashflowFilters() parameters year and yearsRange
+-add to parameters type CashflowFiltersProps
+-in jsx add component Select as parent component
+-add to component Select event onValueChange
+-import function useRouter form package next/navigation
+-create variable const router
+-add to component Select prop defaultValue
+-in component SelectContent invoke function yearsRange?.map()
+-in component cashflow.tsx import function CashflowFilters from component cashflow-filters.tsx
+-import function getTransactionYearsRange from getTransactionYearsRange.ts file
+-invoke function Promise.all()
+-the result of await Promise.all() store in variables const [cashflow, yearsRange]
+-in component CardTitle add component CashflowFilters with props yearsRange and year
+-in component dashboard/page.tsx, add to function DashboardPage() parameter searchParams
+-add to function DashboardPage() keyword async
+-add to parameter searchParams type Promise
+-create variable const searchParamsValues
+-create variable const today
+-create variable let cfYear
+-add condition if (isNaN(cfYear))
+-in condition if (isNaN(cfYear)) redeclare variable cfYear
+-in jsx add to component Cashflow prop year
+-in component cashflow.tsx add to function Cashflow parameter year with type number
+-in jsx add to component CashflowFilters prop year
+-open route: http://localhost:3000/dashboard
+-open route: http://localhost:3000/dashboard?cfyear=2025
