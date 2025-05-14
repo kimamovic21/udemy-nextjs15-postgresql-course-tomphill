@@ -625,3 +625,17 @@ Section 06: Build the main dashboard page
 -in component BarChart add component ChartTooltip with prop content
 -in component BarChart add component Legend
 -add to component Legend props verticalAlign, align, height, iconType and formatter
+-open route: http://localhost:3000/dashboard
+
+35. Add the cashflow summary
+-in component cashflow-content.tsx add empty fragment as parent element
+-in empty fragment create div element with Tailwind CSS classes
+-create variables const totalAnnualIncome and const totalAnnualExpenses
+-create variable const balance
+-open route: http://localhost:3000/dashboard
+-in div element with Tailwind CSS classes create div element for Income information
+-in div element for Income information create elements span and h2
+-create div element for Expenses information
+-create div element for Balance information
+-import function cn from lib/utils.ts file
+-in div element for Balance information, add to h2 element dynamic class with function cn()

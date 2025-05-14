@@ -31,7 +31,7 @@ const Cashflow = async ({
         </CardTitle>
       </CardHeader>
 
-      <CardContent className='grid grid-cols-[1fr_250px]'>
+      <CardContent className='lg:grid lg:grid-cols-[1fr_250px]'>
         <CashflowContent annualCashflow={cashflow} />
       </CardContent>
     </Card>
