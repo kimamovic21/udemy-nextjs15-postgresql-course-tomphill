@@ -592,3 +592,36 @@ Section 06: Build the main dashboard page
 -in jsx add to component CashflowFilters prop year
 -open route: http://localhost:3000/dashboard
 -open route: http://localhost:3000/dashboard?cfyear=2025
+
+34. Add the cashflow bar chart with recharts
+-open link: https://ui.shadcn.com/docs/components/chart
+-open terminal and type command: npx shadcn@latest add chart
+-in package.json file add object overrides
+-in component cashflow.tsx add to component CardContent Tailwind CSS Grid classes
+-in folder dashboard create component cashflow-content.tsx
+-in component cashflow-content.tsx add directive 'use client'
+-create and export function CashflowContent() as default
+-add to function CashflowContent() parameter annualCashflow
+-add to parameter annualCashflow object types
+-import component ChartContainer from component ui/chart.tsx
+-import components Bar, BarChart, CartesianGrid, Legend, XAxis and YAxis from package recharts
+-import components ChartContainer, ChartTooltip and ChartTooltipContent from component ui/chart.tsx
+-in jsx add component ChartContainer as parent component
+-add to component ChartContainer prop config
+-in component ChartContainer add component BarChart
+-add to component BarChart prop data
+-in component BarChart add two components Bar
+-add to Bar components props dataKey, radius and fill
+-in jsx, in component CardContent add component CashflowContent
+-add to component CashflowContent prop annualCashflow
+-in getAnnualCashflow.ts file, add return annualCashflow
+-in component cashflow-content.tsx in component BarChart add component CartesianGrid with prop vertical
+-import functions numeral and format
+-in component BarChart add components YAxis and XAxis
+-add to components YAxis and XAxis prop tickFormatter
+-create variable const today
+-in component YAxis, in prop tickFormatter pass the function numeral
+-in component XAxis, in prop tickFormatter pass the function format
+-in component BarChart add component ChartTooltip with prop content
+-in component BarChart add component Legend
+-add to component Legend props verticalAlign, align, height, iconType and formatter

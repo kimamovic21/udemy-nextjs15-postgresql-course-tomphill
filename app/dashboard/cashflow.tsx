@@ -1,7 +1,13 @@
 import { getAnnualCashflow } from '@/server/getAnnualCashflow';
 import { getTransactionYearsRange } from '@/server/getTransactionYearsRange';
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card';
 import CashflowFilters from './cashflow-filters';
+import CashflowContent from './cashflow-content';
 
 const Cashflow = async ({
   year
@@ -12,7 +18,6 @@ const Cashflow = async ({
     getAnnualCashflow(year),
     getTransactionYearsRange()
   ]);
-  console.log(cashflow);
 
   return (
     <Card className='mb-5'>
@@ -25,6 +30,10 @@ const Cashflow = async ({
           />
         </CardTitle>
       </CardHeader>
+
+      <CardContent className='grid grid-cols-[1fr_250px]'>
+        <CashflowContent annualCashflow={cashflow} />
+      </CardContent>
     </Card>
   );
 };
