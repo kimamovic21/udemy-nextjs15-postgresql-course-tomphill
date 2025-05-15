@@ -651,3 +651,5 @@ Section 07: Extras
 -open Vercel dashboard and create new project
 -connect new Vercel project with your project on GitHub
 -add env variables to Vercel project
+
+38. Set up custom domain for clerk
