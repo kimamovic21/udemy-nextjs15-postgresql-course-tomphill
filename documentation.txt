@@ -645,3 +645,9 @@ Section 07: Extras
 
 36. Upload project to GitHub
 -open web page: https://github.com/ and upload project
+
+37. Deploy to Vercel
+-open web page: https://vercel.com/
+-open Vercel dashboard and create new project
+-connect new Vercel project with your project on GitHub
+-add env variables to Vercel project
