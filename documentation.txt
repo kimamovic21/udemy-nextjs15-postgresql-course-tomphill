@@ -639,3 +639,9 @@ Section 06: Build the main dashboard page
 -create div element for Balance information
 -import function cn from lib/utils.ts file
 -in div element for Balance information, add to h2 element dynamic class with function cn()
+
+
+Section 07: Extras
+
+36. Upload project to GitHub
+-open web page: https://github.com/ and upload project
