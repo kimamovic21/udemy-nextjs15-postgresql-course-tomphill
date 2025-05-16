@@ -663,3 +663,14 @@ Section 07: Extras
 -import React icon=ChartColumnBig from package lucide-react
 -import component Button from component ui/button.tsx
 -in main element create HTML elements with Tailwind CSS classes
+-open route: http://localhost:3000/
+
+40. Add loading states to our app
+-open link: https://ui.shadcn.com/docs/components/skeleton
+-open terminal and type command: npx shadcn@latest add skeleton
+-in folder new create component loading.tsx
+-in component loading.tsx import component Skeleton from component ui/skeleton.tsx
+-in jsx add component Skeleton as parent element
+-open route: http://localhost:3000/dashboard/transactions/new
+-in folder [transactionId] create component loading.tsx
+-in folder transactions create component loading.tsx
