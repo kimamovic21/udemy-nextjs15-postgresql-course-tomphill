@@ -653,3 +653,13 @@ Section 07: Extras
 -add env variables to Vercel project
 
 38. Set up custom domain for clerk
+
+39. Implement the landing page
+-in folder public add image cover.jpg
+-in component app/page.tsx import component Image from package next/image
+-in jsx add component Image with props src, alt, fill and className
+-add to main element Tailwind CSS classes
+-import components SignedIn, SignedOut, SignInButton and SignOutButton from package clerk
+-import React icon=ChartColumnBig from package lucide-react
+-import component Button from component ui/button.tsx
+-in main element create HTML elements with Tailwind CSS classes
